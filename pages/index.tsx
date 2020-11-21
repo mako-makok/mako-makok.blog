@@ -27,7 +27,7 @@ const Home: FC<Props> = (props) => {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostData.map(({ id, date, title}) => (
+          {allPostData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
@@ -44,16 +44,16 @@ const Home: FC<Props> = (props) => {
   )
 }
 
- /**
-  * getStaticPropsはサーバサイドでのみ実行される. クライアント用のバンドルにも含まれない.
-  * また、Pageからのみexport可能.
-  */
-export async function getStaticProps(): Promise<{props: Props}> {
+/**
+ * getStaticPropsはサーバサイドでのみ実行される. クライアント用のバンドルにも含まれない.
+ * また、Pageからのみexport可能.
+ */
+export async function getStaticProps(): Promise<{ props: Props }> {
   const allPostData = getSortedPostData()
   return {
     props: {
-      allPostData
-    }
+      allPostData,
+    },
   }
 }
 

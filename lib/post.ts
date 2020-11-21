@@ -1,13 +1,13 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import html  from 'remark-html'
+import html from 'remark-html'
 import remark from 'remark'
 
 export type PostData = {
-  id: string,
+  id: string
   contentHtml: string
-  title: string,
+  title: string
   date: string
 }
 
@@ -21,7 +21,7 @@ const postsDirectory = path.join(process.cwd(), 'posts')
 
 export function getSortedPostData(): PostData[] {
   const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData: PostData[] = fileNames.map(fileName => {
+  const allPostsData: PostData[] = fileNames.map((fileName) => {
     // idを取得するためにファイル名から".md"を削除する
     const id = fileName.replace(/\.md$/, '')
 
@@ -34,7 +34,7 @@ export function getSortedPostData(): PostData[] {
     // データをidと合わせる
     return {
       id,
-      ...matterResult.data as Pick<PostData, 'title' | 'date'>
+      ...(matterResult.data as Pick<PostData, 'title' | 'date' | 'contentHtml'>),
     }
   })
 
@@ -48,11 +48,11 @@ export function getSortedPostData(): PostData[] {
 export function getAllPostIds(): Params[] {
   const fileNames = fs.readdirSync(postsDirectory)
 
-  return fileNames.map(fileName => {
+  return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
-      }
+        id: fileName.replace(/\.md$/, ''),
+      },
     }
   })
 }
@@ -63,14 +63,12 @@ export async function getPostData(id: string): Promise<PostData> {
 
   const matterResult = matter(fileContents)
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
+  const processedContent = await remark().use(html).process(matterResult.content)
   const contentHtml = processedContent.toString()
 
   return {
     id,
     contentHtml,
-    ...matterResult.data as Pick<PostData, 'title' | 'date'>
+    ...(matterResult.data as Pick<PostData, 'title' | 'date'>),
   }
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import { AppProps } from "next/app";
+import React, { Component } from 'react'
+import { AppProps } from 'next/app'
 import '../styles/global.css'
 
-export default ({ Component, pageProps }: AppProps) => {
+export const _app = ({ Component, pageProps }: AppProps): JSX.Element => {
   return <Component {...pageProps} />
 }

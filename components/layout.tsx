@@ -7,21 +7,18 @@ import Link from 'next/link'
 const name = 'Makoto'
 export const siteTitle = 'Next.js with TypeScript Sample Website'
 
-const Layout: FC<{ home?: FC}> = ({ children, home }) => {
+const Layout: FC<{ home?: FC }> = ({ children, home }) => {
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="Learn how to build a personal website using Next.js" />
         <meta
           property="og:image"
           content={`https://og-image.now.sh/${encodeURI(
-            siteTitle)
-          }.png?heme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}>
-        </meta>
+            siteTitle
+          )}.png?heme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+        ></meta>
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
@@ -61,7 +58,8 @@ const Layout: FC<{ home?: FC}> = ({ children, home }) => {
           </Link>
         </div>
       )}
-    </div>)
+    </div>
+  )
 }
 
 export default Layout
