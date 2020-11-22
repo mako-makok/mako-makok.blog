@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import Head from 'next/head'
 import Date from '../../components/date'
 import Layout from '../../components/layout'
-import { getAllPostIds, getPostData, PostData, Params } from '../../lib/post'
+import { getAllPostIds, PostData, PostPath, getPostDataById } from '../../lib/post'
 import utilStyles from '../../styles/utils.module.css'
-import { GetStaticPathsResult } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
-type Props = {
+interface Props {
   postData: PostData
 }
 
@@ -28,8 +28,7 @@ export const Posts: FC<Props> = (props) => {
   )
 }
 
-export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  // id としてとりうる値のリストを返す
+export const getStaticPaths: GetStaticPaths<PostPath> = async () => {
   const paths = getAllPostIds()
   return {
     paths,
@@ -37,9 +36,9 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   }
 }
 
-export async function getStaticProps({ params }: Params): Promise<{ props: Props }> {
-  // params.id を使用して、ブログの投稿に必要なデータを取得する
-  const postData = await getPostData(params.id)
+export const getStaticProps: GetStaticProps<Props, PostPath> = async ({ params }) => {
+  // todo return not found page
+  const postData: PostData = await getPostDataById((params as PostPath).id as string)
   return {
     props: {
       postData,

@@ -2,11 +2,12 @@ import React, { FC } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Date from '../components/date'
-import Layout, { siteTitle } from '../components/layout'
+import Layout, { SITE_TITLE } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostData, PostData } from '../lib/post'
+import { GetStaticProps } from 'next'
 
-type Props = {
+interface Props {
   allPostData: PostData[]
 }
 
@@ -15,14 +16,10 @@ const Home: FC<Props> = (props) => {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{SITE_TITLE}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>hello, my name is Makoto!</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        <p>mako_makokの技術的に関するアウトプットなど</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -44,11 +41,7 @@ const Home: FC<Props> = (props) => {
   )
 }
 
-/**
- * getStaticPropsはサーバサイドでのみ実行される. クライアント用のバンドルにも含まれない.
- * また、Pageからのみexport可能.
- */
-export async function getStaticProps(): Promise<{ props: Props }> {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const allPostData = getSortedPostData()
   return {
     props: {

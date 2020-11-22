@@ -3,9 +3,10 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import { ProfileIcon } from './icon/Profile'
 
-const name = 'Makoto'
-export const siteTitle = 'Next.js with TypeScript Sample Website'
+const NAME = 'mako_makok'
+export const SITE_TITLE = 'mako-makok.dev'
 
 const Layout: FC<{ home?: FC }> = ({ children, home }) => {
   return (
@@ -16,35 +17,24 @@ const Layout: FC<{ home?: FC }> = ({ children, home }) => {
         <meta
           property="og:image"
           content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
+            SITE_TITLE
           )}.png?heme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         ></meta>
-        <meta name="og:title" content={siteTitle} />
+        <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
         {home ? (
           <>
-            <img
-              src="/images/profile.jpg"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt="name"
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <ProfileIcon />
+            <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
           </>
         ) : (
           <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                />
-              </a>
-            </Link>
+            <ProfileIcon />
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className={utilStyles.colorInherit}>{NAME}</a>
               </Link>
             </h2>
           </>
