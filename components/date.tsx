@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { parseISO, format } from 'date-fns'
 
 interface Props {

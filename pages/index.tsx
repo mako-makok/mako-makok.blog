@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
 import { PostItemList } from '../components/postItemList'
 import { Layout, SITE_TITLE } from '../components/layout'

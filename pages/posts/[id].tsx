@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
 import { Date } from '../../components/date'
 import { Layout } from '../../components/layout'
