@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
-import Date from '../../components/date'
-import Layout from '../../components/layout'
+import { Date } from '../../components/date'
+import { Layout } from '../../components/layout'
 import { getAllPostIds, PostData, PostPath, getPostDataById } from '../../lib/post'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -13,7 +13,7 @@ interface Props {
 const Posts: FC<Props> = (props) => {
   const { postData } = props
   return (
-    <Layout>
+    <Layout home={false}>
       <Head>
         <title>{postData.title}</title>
       </Head>

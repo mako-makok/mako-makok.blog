@@ -8,7 +8,7 @@ import { ProfileIcon } from './icon/Profile'
 const NAME = 'mako_makok'
 export const SITE_TITLE = 'mako-makok.dev'
 
-const Layout: FC<{ home?: FC }> = ({ children, home }) => {
+export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -51,5 +51,3 @@ const Layout: FC<{ home?: FC }> = ({ children, home }) => {
     </div>
   )
 }
-
-export default Layout

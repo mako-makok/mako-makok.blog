@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
 import { PostItemList } from '../components/PostItemList'
-import Layout, { SITE_TITLE } from '../components/layout'
+import { Layout, SITE_TITLE } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostData, PostData } from '../lib/post'
 import { GetStaticProps } from 'next'
@@ -13,7 +13,7 @@ interface Props {
 const Home: FC<Props> = (props) => {
   const { allPostData } = props
   return (
-    <Layout>
+    <Layout home={true}>
       <Head>
         <title>{SITE_TITLE}</title>
       </Head>
