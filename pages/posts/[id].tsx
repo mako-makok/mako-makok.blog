@@ -10,7 +10,7 @@ interface Props {
   postData: PostData
 }
 
-export const Posts: FC<Props> = (props) => {
+const Posts: FC<Props> = (props) => {
   const { postData } = props
   return (
     <Layout>
