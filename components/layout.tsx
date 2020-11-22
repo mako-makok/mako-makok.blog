@@ -18,14 +18,13 @@ export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
+        <ProfileIcon />
         {home ? (
           <>
-            <ProfileIcon />
             <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
           </>
         ) : (
           <>
-            <ProfileIcon />
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
                 <a className={utilStyles.colorInherit}>{NAME}</a>
