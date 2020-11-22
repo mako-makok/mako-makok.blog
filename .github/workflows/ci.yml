@@ -1,0 +1,21 @@
+name: ci
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# test
+on:
+  push:
+    branches:
+      - feature/add-github-actions
+
+jobs:
+  deploy:
+    name: vercel-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: |
+          curl -X POST ${{secrets.VERCEL_DEPLOY_HOOK_URL}}
