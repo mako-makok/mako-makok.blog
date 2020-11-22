@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
-import { PostItemList } from '../components/PostItemList'
+import { PostItemList } from '../components/postItemList'
 import { Layout, SITE_TITLE } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostData, PostData } from '../lib/post'

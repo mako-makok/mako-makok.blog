@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { Date } from '../components/date'
+import { Date } from './date'
 import { PostData } from '../lib/post'
 import utilStyles from '../styles/utils.module.css'
 

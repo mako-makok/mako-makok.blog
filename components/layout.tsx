@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
-import { ProfileIcon } from './icon/Profile'
+import { ProfileIcon } from './icon/profile'
 
 const NAME = 'mako_makok'
 export const SITE_TITLE = 'mako-makok.dev'
