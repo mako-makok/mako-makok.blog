@@ -1,15 +1,9 @@
 name: ci
 
-# on:
-#   push:
-#     branches:
-#       - main
-
-# test
 on:
   push:
     branches:
-      - feature/add-github-actions
+      - main
 
 jobs:
   deploy:
