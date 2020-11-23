@@ -4,7 +4,6 @@ import matter from 'gray-matter'
 import html from 'remark-html'
 import remark from 'remark'
 import { GetStaticPathsResult } from 'next'
-import highlight from 'remark-highlight.js'
 
 export type PostData = {
   id: string
@@ -56,7 +55,7 @@ export async function getPostDataById(id: string): Promise<PostData> {
 
   const matterResult = matter(fileContents)
 
-  const processedContent = await remark().use(html).use(highlight).process(matterResult.content)
+  const processedContent = await remark().use(html).process(matterResult.content)
   const contentHtml: string = processedContent.toString()
 
   return {
