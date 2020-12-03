@@ -27,7 +27,7 @@ const Posts: FC<Props> = (props) => {
           <Date dateString={postData.date} />
         </div>
         <div
-          className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl"
+          className="prose sm:prose"
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
