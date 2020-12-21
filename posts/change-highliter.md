@@ -50,7 +50,7 @@ yarn add prismjs
 あとは記事の page component にインストールした諸々を追加していきます。  
 Prism.js を適用させるためにハイライトさせたいページで`Prism.highlightAll`を`useEffect`に渡します。
 
-```tsx
+```js
 import { FC, useEffect } from 'react'
 
 // ...
@@ -61,8 +61,8 @@ useEffect(() => {
 
 あとは typography を効かせたい HTML に対して`prose`などの class を指定するだけです。
 
-```tsx
-<div className="prose sm:prose" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+```html
+<div className="prose sm:prose" dangerouslySetInnerHTML="{{" __html: postData.contentHtml }} />
 ```
 
 今回の修正によってよりサイズを減らすをへらすことができました。tailwind はプラグインが充実しているのも良いですね。  
