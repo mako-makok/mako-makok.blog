@@ -34,7 +34,7 @@ export function getSortedPostData(): PostData[] {
     }
   })
 
-  return allPostsData.sort((a, b) => (a.date > b.date ? 1 : -1))
+  return allPostsData.sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
 export function getAllPostIds(): GetStaticPathsResult<PostPath>['paths'] {
