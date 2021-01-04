@@ -4,7 +4,8 @@ import styles from '../styles/layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { ProfileIcon } from './icon/profile'
-import { BaseIcon } from './base/baseIcon'
+import { GithubIcon } from './icon/github'
+import { TwitterIcon } from './icon/twitter'
 
 const NAME = 'mako_makok'
 export const SITE_TITLE = 'mako-makok.dev'
@@ -42,7 +43,6 @@ export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
           </Link>
         </div>
       )}
-      <BaseIcon />
     </div>
   )
 }
