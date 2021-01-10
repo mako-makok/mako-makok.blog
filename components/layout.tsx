@@ -4,13 +4,15 @@ import styles from '../styles/layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { ProfileIcon } from './icon/profile'
+import { GithubIcon } from './icon/github'
+import { TwitterIcon } from './icon/twitter'
 
 const NAME = 'mako_makok'
 export const SITE_TITLE = 'mako-makok.dev'
 
 export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
   return (
-    <div className={styles.container}>
+    <div className="flex flex-col min-h-screen">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="mako_makokのブログ" />
@@ -20,9 +22,7 @@ export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
       <header className={styles.header}>
         <ProfileIcon />
         {home ? (
-          <>
-            <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
-          </>
+          <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
         ) : (
           <>
             <h2 className={utilStyles.headingLg}>
@@ -33,14 +33,20 @@ export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
           </>
         )}
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← back to home</a>
-          </Link>
-        </div>
-      )}
+      <div className="flex-grow max-w-5xl mx-96 px-12">
+        <main>{children}</main>
+        {!home && (
+          <div className={styles.backToHome}>
+            <Link href="/">
+              <a>← back to home</a>
+            </Link>
+          </div>
+        )}
+      </div>
+      <footer className="flex justify-center my-10">
+        <GithubIcon />
+        <TwitterIcon />
+      </footer>
     </div>
   )
 }
