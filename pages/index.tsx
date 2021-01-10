@@ -18,11 +18,8 @@ const Home: FC<Props> = (props) => {
         <Head>
           <title>{SITE_TITLE}</title>
         </Head>
-        <section className={utilStyles.headingMd}>
-          <p>mako_makokの技術的に関するアウトプットなど</p>
-        </section>
         <section>
-          <h2 className={utilStyles.headingLg}>Blog</h2>
+          <h2 className={utilStyles.headingLg}>Articles</h2>
           <PostItemList postDatas={allPostData} />
         </section>
       </Layout>
