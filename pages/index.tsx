@@ -13,17 +13,15 @@ interface Props {
 const Home: FC<Props> = (props) => {
   const { allPostData } = props
   return (
-    <div className="flex justify-center">
-      <Layout home={true}>
-        <Head>
-          <title>{SITE_TITLE}</title>
-        </Head>
-        <section>
-          <h2 className={utilStyles.headingLg}>Articles</h2>
-          <PostItemList postDatas={allPostData} />
-        </section>
-      </Layout>
-    </div>
+    <Layout home={true}>
+      <Head>
+        <title>{SITE_TITLE}</title>
+      </Head>
+      <section>
+        <h2 className={utilStyles.headingLg}>Articles</h2>
+        <PostItemList postDatas={allPostData} />
+      </section>
+    </Layout>
   )
 }
 

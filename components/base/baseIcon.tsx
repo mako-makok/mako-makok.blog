@@ -8,7 +8,7 @@ export const BaseIcon: FC<Props> = (props) => {
   const { url, iconPath } = props
   return (
     <a href={url} target="_blank" rel="noreferrer">
-      <img src={iconPath} alt="name" className="w-6 h-6 rounded-full mr-2 bg-gray-100" />
+      <img src={iconPath} alt="name" className="w-6 h-6 rounded-full mr-2" />
     </a>
   )
 }

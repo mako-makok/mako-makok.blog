@@ -10,7 +10,7 @@ interface Props {
 export const PostItemList: FC<Props> = (props) => {
   const { postDatas } = props
   return (
-    <ul className={utilStyles.list}>
+    <ul>
       {postDatas.map(({ id, date, title }) => (
         <li className={utilStyles.listItem} key={id}>
           <Link href={`/posts/${id}`}>

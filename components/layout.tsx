@@ -1,16 +1,17 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import styles from '../styles/layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
-import { ProfileIcon } from './icon/profile'
+import { Header } from './header'
 import { GithubIcon } from './icon/github'
 import { TwitterIcon } from './icon/twitter'
+import styles from '../styles/layout.module.css'
 
-const NAME = 'mako_makok'
 export const SITE_TITLE = 'mako-makok.dev'
 
-export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
+interface Props {
+  home: boolean
+}
+export const Layout: FC<Props> = ({ children, home }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
@@ -19,21 +20,10 @@ export const Layout: FC<{ home: boolean }> = ({ children, home }) => {
         <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        <ProfileIcon />
-        {home ? (
-          <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
-        ) : (
-          <>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{NAME}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <div className="flex-grow max-w-5xl mx-96 px-12">
+      <div className="flex-grow max-w-3xl mx-auto my-4">
+        <div className="mb-16">
+          <Header home={home} />
+        </div>
         <main>{children}</main>
         {!home && (
           <div className={styles.backToHome}>
