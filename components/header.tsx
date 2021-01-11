@@ -12,7 +12,7 @@ export const Header: FC<Props> = ({ home }) => {
   const className = 'self-end text-3xl font-semibold'
   return (
     <header>
-      <div className="flex">
+      <div className="flex pt-8">
         <ProfileIcon />
         {home ? (
           <h1 className={className}>{NAME}</h1>
