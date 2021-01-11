@@ -2,8 +2,7 @@ import { FC } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Header } from './header'
-import { GithubIcon } from './icon/github'
-import { TwitterIcon } from './icon/twitter'
+import { Footer } from './footer'
 import styles from '../styles/layout.module.css'
 
 export const SITE_TITLE = 'mako-makok.dev'
@@ -20,7 +19,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="flex-grow max-w-3xl mx-auto">
+      <div className="flex-grow max-w-3xl mx-auto mb-16">
         <div className="mb-16">
           <Header home={home} />
         </div>
@@ -33,10 +32,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
           </div>
         )}
       </div>
-      <footer className="flex justify-center my-10">
-        <GithubIcon />
-        <TwitterIcon />
-      </footer>
+      <Footer />
     </div>
   )
 }
