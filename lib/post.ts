@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import html from 'remark-html'
 import remark from 'remark'
+import prism from 'remark-prism'
 import { GetStaticPathsResult } from 'next'
 
 export type PostData = {
@@ -55,7 +56,7 @@ export async function getPostDataById(id: string): Promise<PostData> {
 
   const matterResult = matter(fileContents)
 
-  const processedContent = await remark().use(html).process(matterResult.content)
+  const processedContent = await remark().use(html).use(prism).process(matterResult.content)
   const contentHtml: string = processedContent.toString()
 
   return {

@@ -1,11 +1,10 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import Head from 'next/head'
 import { Date } from '../../components/date'
 import { Layout } from '../../components/layout'
 import { getAllPostIds, PostData, PostPath, getPostDataById } from '../../lib/post'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Prism from 'prismjs'
 
 interface Props {
   postData: PostData
@@ -13,9 +12,6 @@ interface Props {
 
 const Posts: FC<Props> = (props) => {
   const { postData } = props
-  useEffect(() => {
-    Prism.highlightAll
-  }, [])
   return (
     <Layout home={false}>
       <Head>
