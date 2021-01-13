@@ -21,16 +21,11 @@ const Posts: FC<Props> = (props) => {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article>
-        <h1 className="my-6 text-3xl font-bold">{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
-        </div>
-        <div
-          className="prose-sm prose-indigo"
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
-      </article>
+      <h1 className="my-6 text-3xl font-bold">{postData.title}</h1>
+      <div className={utilStyles.lightText}>
+        <Date dateString={postData.date} />
+      </div>
+      <article className="prose" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
   )
 }
