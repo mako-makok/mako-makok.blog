@@ -24,7 +24,7 @@ const Posts: FC<Props> = (props) => {
       <h1 className="text-3xl font-bold">{postData.title}</h1>
       <div className="mt-2 mb-6">
         {postData.tags?.map((tag) => (
-          <Tag tagName={tag} key={tag} />
+          <Tag tagName={tag} textSize="M" key={tag} />
         ))}
       </div>
       <article className="prose" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
