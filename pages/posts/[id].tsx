@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Head from 'next/head'
 import { Date } from '../../components/date'
 import { Layout } from '../../components/layout'
+import { Tag } from '../../components/tag'
 import { getAllPostIds, PostData, PostPath, getPostDataById } from '../../lib/post'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -17,9 +18,14 @@ const Posts: FC<Props> = (props) => {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <h1 className="my-6 text-3xl font-bold">{postData.title}</h1>
       <div className={utilStyles.lightText}>
         <Date dateString={postData.date} />
+      </div>
+      <h1 className="text-3xl font-bold">{postData.title}</h1>
+      <div className="mt-2 mb-6">
+        {postData.tags?.map((tag) => (
+          <Tag tagName={tag} key={tag} />
+        ))}
       </div>
       <article className="prose" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>

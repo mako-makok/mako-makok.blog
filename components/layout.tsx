@@ -19,7 +19,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="flex flex-col min-h-screen ">
+      <div className="flex flex-col min-h-screen">
         <div className="flex-grow max-w-3xl mx-auto mb-16">
           <div className="mb-16">
             <Header home={home} />

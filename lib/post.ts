@@ -11,6 +11,7 @@ export type PostData = {
   contentHtml: string
   title: string
   date: string
+  tags?: string[]
 }
 
 export type PostPath = {
@@ -31,7 +32,7 @@ export function getSortedPostData(): PostData[] {
 
     return {
       id,
-      ...(matterResult.data as Pick<PostData, 'title' | 'date' | 'contentHtml'>),
+      ...(matterResult.data as Omit<PostData, 'id'>),
     }
   })
 
@@ -58,10 +59,13 @@ export async function getPostDataById(id: string): Promise<PostData> {
 
   const processedContent = await remark().use(html).use(prism).process(matterResult.content)
   const contentHtml: string = processedContent.toString()
+  const { title, date, tags } = matterResult.data as PostData
 
   return {
     id,
     contentHtml,
-    ...(matterResult.data as Pick<PostData, 'title' | 'date'>),
+    title,
+    date,
+    tags,
   }
 }
