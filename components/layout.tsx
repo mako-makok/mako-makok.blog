@@ -18,9 +18,10 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="description" content="mako_makokのブログ" />
         <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex flex-col min-h-screen ">
-        <div className="flex-grow max-w-3xl mx-auto mb-16">
+      <div className="flex flex-col min-h-screen">
+        <div className="flex-grow mx-auto mb-16">
           <div className="mb-16">
             <Header home={home} />
           </div>
