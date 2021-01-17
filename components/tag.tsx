@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import Link from 'next/link'
 
 interface Props {
   tagName: string
@@ -6,13 +7,15 @@ interface Props {
 }
 export const Tag: FC<Props> = ({ tagName, textSize }) => {
   return (
-    <a
-      className={`bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 ${getClassNameByTextSize(
-        textSize
-      )}`}
-    >
-      {tagName}
-    </a>
+    <Link href={`/tags/${tagName}`}>
+      <a
+        className={`bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 ${getClassNameByTextSize(
+          textSize
+        )}`}
+      >
+        {tagName}
+      </a>
+    </Link>
   )
 }
 
