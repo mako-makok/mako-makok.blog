@@ -21,12 +21,12 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="flex flex-col min-h-screen">
-        <div className="flex-grow mx-auto mb-16">
+        <div className="max-w-xl mx-auto mb-16">
           <div className="mb-16">
             <Header home={home} />
           </div>
           <main>{children}</main>
-          {!home && (
+          {home || (
             <div className={styles.backToHome}>
               <Link href="/">
                 <a>← back to home</a>
@@ -34,7 +34,9 @@ export const Layout: FC<Props> = ({ children, home }) => {
             </div>
           )}
         </div>
-        <Footer />
+        <div className="mt-auto">
+          <Footer />
+        </div>
       </div>
     </>
   )
