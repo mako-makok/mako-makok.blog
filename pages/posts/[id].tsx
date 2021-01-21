@@ -4,7 +4,6 @@ import { Date } from '../../components/date'
 import { Layout } from '../../components/layout'
 import { Tag } from '../../components/tag'
 import { getAllPostIds, PostData, PostPath, getPostDataById } from '../../lib/post'
-import utilStyles from '../../styles/utils.module.css'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 interface Props {
