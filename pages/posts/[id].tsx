@@ -18,7 +18,7 @@ const Posts: FC<Props> = (props) => {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <div className="text-gray-900">
+      <div className="text-gray-400">
         <Date dateString={postData.date} />
       </div>
       <h1 className="text-3xl font-bold">{postData.title}</h1>

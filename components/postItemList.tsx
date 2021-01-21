@@ -14,7 +14,7 @@ export const PostItemList: FC<Props> = (props) => {
     <ul>
       {postDatas.map(({ id, date, title, tags }) => (
         <li className={utilStyles.listItem} key={id}>
-          <small className="text-gray-900">
+          <small className="text-gray-400">
             <Date dateString={date} />
           </small>
           <br />
