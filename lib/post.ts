@@ -5,7 +5,6 @@ import html from 'remark-html'
 import remark from 'remark'
 import prism from 'remark-prism'
 import { GetStaticPathsResult } from 'next'
-import { ta } from 'date-fns/locale'
 
 export type PostData = {
   id: string
