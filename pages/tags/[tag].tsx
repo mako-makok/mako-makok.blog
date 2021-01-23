@@ -1,18 +1,20 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import { PostItemList } from '../../components/postItemList'
+import { PostItemList, PostSummary } from '../../components/postItemList'
 import { Layout, SITE_TITLE } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
-import { getSortedPostsByTag, PostData, TagPath, getAllTags } from '../../lib/post'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import tagmap from '../../generate/tagmap.json'
 
 interface Props {
-  postsAboutTag: PostData[]
+  postSummary: PostSummary[]
   tag: string
 }
 
+type Tag = keyof typeof tagmap
+
 const Posts: FC<Props> = (props) => {
-  const { postsAboutTag, tag } = props
+  const { postSummary, tag } = props
   return (
     <Layout home={true}>
       <Head>
@@ -20,26 +22,26 @@ const Posts: FC<Props> = (props) => {
       </Head>
       <section>
         <h2 className={utilStyles.headingLg}>{`Articles about ${tag}`}</h2>
-        <PostItemList postDatas={postsAboutTag} />
+        <PostItemList postDatas={postSummary} />
       </section>
     </Layout>
   )
 }
 
-export const getStaticPaths: GetStaticPaths<TagPath> = async () => {
-  const paths = getAllTags()
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = Object.keys(tagmap).map((tag) => `/tags/${tag}`)
   return {
     paths,
     fallback: false,
   }
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const postsAboutTag = getSortedPostsByTag((params as any).tag)
+export const getStaticProps: GetStaticProps = async (props) => {
+  const tag = (props.params as any).tag as Tag
   return {
     props: {
-      postsAboutTag,
-      tag: (params as any).tag,
+      postSummary: tagmap[tag],
+      tag,
     },
   }
 }

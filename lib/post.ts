@@ -23,10 +23,6 @@ export type PostPath = {
   id: string
 }
 
-export type TagPath = {
-  tag: string
-}
-
 const postsDirectory = path.join(process.cwd(), 'posts')
 
 export function getSortedPostData(): PostData[] {
@@ -48,25 +44,6 @@ export function getSortedPostData(): PostData[] {
   return allPostsData.sort((a, b) => (a.date > b.date ? -1 : 1))
 }
 
-export function getSortedPostsByTag(tag: string): PostData[] {
-  const fileNames: string[] = fs.readdirSync(postsDirectory)
-  const posts: PostData[] = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '')
-
-    const fullPath: string = path.join(postsDirectory, fileName)
-    const fileContents: string = fs.readFileSync(fullPath, 'utf-8')
-
-    const frontMatter = matter(fileContents).data as Omit<PostData, 'id'>
-
-    return {
-      id,
-      ...frontMatter,
-    }
-  })
-
-  return posts.filter((post) => post.tags.includes(tag)).sort((a, b) => (a.date > b.date ? -1 : 1))
-}
-
 export function getAllPostIds(): GetStaticPathsResult<PostPath>['paths'] {
   const fileNames = fs.readdirSync(postsDirectory)
 
@@ -74,29 +51,6 @@ export function getAllPostIds(): GetStaticPathsResult<PostPath>['paths'] {
     return {
       params: {
         id: fileName.replace(/\.md$/, ''),
-      },
-    }
-  })
-}
-
-export function getAllTags(): GetStaticPathsResult<TagPath>['paths'] {
-  const fileNames = fs.readdirSync(postsDirectory)
-
-  const tags: string[] = fileNames
-    .map((fileName) => {
-      const fullPath: string = path.join(postsDirectory, fileName)
-      const fileContents: string = fs.readFileSync(fullPath, 'utf-8')
-
-      const frontMatter = matter(fileContents).data as Omit<PostData, 'id'>
-
-      return frontMatter.tags
-    })
-    .flatMap((tag) => tag)
-
-  return Array.from(new Set(tags)).map((tag) => {
-    return {
-      params: {
-        tag: tag,
       },
     }
   })

@@ -2,12 +2,19 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { Date } from './date'
 import { Tag } from './tag'
-import { PostData } from '../lib/post'
 import utilStyles from '../styles/utils.module.css'
 
 interface Props {
-  postDatas: PostData[]
+  postDatas: PostSummary[]
 }
+
+export type PostSummary = {
+  id: string
+  title: string
+  date: string
+  tags: string[]
+}
+
 export const PostItemList: FC<Props> = (props) => {
   const { postDatas } = props
   return (
