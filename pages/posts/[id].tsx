@@ -34,7 +34,10 @@ const Posts: FC<Props> = (props) => {
           <Tag tagName={tag} textSize="M" key={tag} />
         ))}
       </div>
-      <article className="prose" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <article
+        className="prose max-w-none"
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+      />
     </Layout>
   )
 }
