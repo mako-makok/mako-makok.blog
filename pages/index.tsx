@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Head from 'next/head'
 import { PostItemList, PostSummary } from '../components/postItemList'
 import { Layout, SITE_TITLE } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
 import { GetStaticProps } from 'next'
 import posts from '../generate/posts.json'
 
@@ -18,7 +17,7 @@ const Home: FC<Props> = (props) => {
         <title>{SITE_TITLE}</title>
       </Head>
       <section>
-        <h2 className={utilStyles.headingLg}>Articles</h2>
+        <h2 className="text-2xl my-4">Articles</h2>
         <PostItemList postDatas={allPostSummarys} />
       </section>
     </Layout>

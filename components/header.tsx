@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import { ProfileIcon } from './icon/profile'
-import utilStyles from '../styles/utils.module.css'
 
 const NAME = 'mako_makok'
 
@@ -20,7 +19,7 @@ export const Header: FC<Props> = ({ home }) => {
           <>
             <h2 className={className}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{NAME}</a>
+                <a className="text-black">{NAME}</a>
               </Link>
             </h2>
           </>

@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { Header } from './header'
 import { Footer } from './footer'
-import styles from '../styles/layout.module.css'
 
 export const SITE_TITLE = 'mako-makok.dev'
 
@@ -27,7 +26,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
           </div>
           <main>{children}</main>
           {home || (
-            <div className={styles.backToHome}>
+            <div className="mt-12 mb-0 mx-0">
               <Link href="/">
                 <a>← back to home</a>
               </Link>

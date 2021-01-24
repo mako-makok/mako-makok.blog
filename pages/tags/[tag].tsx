@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Head from 'next/head'
 import { PostItemList, PostSummary } from '../../components/postItemList'
 import { Layout, SITE_TITLE } from '../../components/layout'
-import utilStyles from '../../styles/utils.module.css'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import tagmap from '../../generate/tagmap.json'
 
@@ -21,7 +20,7 @@ const Posts: FC<Props> = (props) => {
         <title>{SITE_TITLE}</title>
       </Head>
       <section>
-        <h2 className={utilStyles.headingLg}>{`Articles about ${tag}`}</h2>
+        <h2 className="text-2xl my-4">{`Articles about ${tag}`}</h2>
         <PostItemList postDatas={postSummary} />
       </section>
     </Layout>

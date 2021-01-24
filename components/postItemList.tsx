@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { Date } from './date'
 import { Tag } from './tag'
-import utilStyles from '../styles/utils.module.css'
 
 interface Props {
   postDatas: PostSummary[]
@@ -20,7 +19,7 @@ export const PostItemList: FC<Props> = (props) => {
   return (
     <ul>
       {postDatas.map(({ id, date, title, tags }) => (
-        <li className={utilStyles.listItem} key={id}>
+        <li className="mx-0 mt-0 mb-5" key={id}>
           <small className="text-gray-400">
             <Date dateString={date} />
           </small>
