@@ -5,7 +5,7 @@ import { Layout } from '../../components/layout'
 import { Tag } from '../../components/tag'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import posts from '../../generate/posts.json'
-import { convertHtml } from '../../lib/post'
+import { convertHtml } from '../../lib/markdown'
 
 interface Props {
   postData: {
