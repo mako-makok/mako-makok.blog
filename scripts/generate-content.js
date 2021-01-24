@@ -7,17 +7,29 @@ const getFileNames = (dir) => fs.readdirSync(dir)
 const getAllPost = () => {
   const postsDirectory = path.join(process.cwd(), 'posts')
   const fileNames = getFileNames(postsDirectory)
-  return fileNames.reduce((acc, fileName) => {
-    const id = fileName.replace(/\.md$/, '')
+  const allPost = fileNames
+    .map((fileName) => {
+      const id = fileName.replace(/\.md$/, '')
 
-    const fileContents = fs.readFileSync(path.join(postsDirectory, fileName), 'utf-8')
-    const frontMatter = matter(fileContents)
+      const fileContents = fs.readFileSync(path.join(postsDirectory, fileName), 'utf-8')
+      const frontMatter = matter(fileContents)
+      return {
+        id,
+        ...frontMatter.data,
+        content: frontMatter.content,
+      }
+    })
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
 
+  return allPost.reduce((acc, post) => {
+    const { id, title, date, tags, content } = post
     return {
       ...acc,
       [id]: {
-        ...frontMatter.data,
-        content: frontMatter.content,
+        title,
+        date,
+        tags,
+        content,
       },
     }
   }, {})
