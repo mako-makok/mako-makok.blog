@@ -1,17 +1,17 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import { PostItemList } from '../components/postItemList'
+import { PostItemList, PostSummary } from '../components/postItemList'
 import { Layout, SITE_TITLE } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostData, PostData } from '../lib/post'
 import { GetStaticProps } from 'next'
+import posts from '../generate/posts.json'
 
 interface Props {
-  allPostData: PostData[]
+  allPostSummarys: PostSummary[]
 }
 
 const Home: FC<Props> = (props) => {
-  const { allPostData } = props
+  const { allPostSummarys } = props
   return (
     <Layout home={true}>
       <Head>
@@ -19,17 +19,25 @@ const Home: FC<Props> = (props) => {
       </Head>
       <section>
         <h2 className={utilStyles.headingLg}>Articles</h2>
-        <PostItemList postDatas={allPostData} />
+        <PostItemList postDatas={allPostSummarys} />
       </section>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allPostData = getSortedPostData()
+  const allPostSummarys = Object.entries(posts).map(([id, post]) => {
+    const { title, date, tags } = post
+    return {
+      id,
+      title,
+      date,
+      tags,
+    }
+  })
   return {
     props: {
-      allPostData,
+      allPostSummarys,
     },
   }
 }
