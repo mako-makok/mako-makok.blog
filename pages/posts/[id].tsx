@@ -19,25 +19,22 @@ interface Props {
 type Id = keyof typeof posts
 
 const Posts: FC<Props> = (props) => {
-  const { postData } = props
+  const { contentHtml, title, date, tags } = props.postData
   return (
     <Layout home={false}>
       <Head>
-        <title>{postData.title}</title>
+        <title>{title}</title>
       </Head>
       <div className="text-gray-400">
-        <Date dateString={postData.date} />
+        <Date date={date} />
       </div>
-      <h1 className="text-3xl font-bold">{postData.title}</h1>
+      <h1 className="text-3xl font-bold">{title}</h1>
       <div className="mt-2 mb-6">
-        {postData.tags?.map((tag) => (
+        {tags?.map((tag) => (
           <Tag tagName={tag} textSize="M" key={tag} />
         ))}
       </div>
-      <article
-        className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-      />
+      <article className="prose max-w-none" dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </Layout>
   )
 }

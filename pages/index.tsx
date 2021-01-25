@@ -5,23 +5,23 @@ import { GetStaticProps } from 'next'
 import posts from '../generate/posts.json'
 
 interface Props {
-  allPostSummarys: PostSummary[]
+  postSummarys: PostSummary[]
 }
 
-const Home: FC<Props> = (props) => {
-  const { allPostSummarys } = props
+const Index: FC<Props> = (props) => {
+  const { postSummarys } = props
   return (
-    <Layout home={true}>
+    <Layout home>
       <section>
         <h2 className="text-2xl my-4">Articles</h2>
-        <PostItemList postDatas={allPostSummarys} />
+        <PostItemList postSummarys={postSummarys} />
       </section>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allPostSummarys = Object.entries(posts).map(([id, post]) => {
+  const postSummarys = Object.entries(posts).map(([id, post]) => {
     const { title, date, tags } = post
     return {
       id,
@@ -32,9 +32,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   })
   return {
     props: {
-      allPostSummarys,
+      postSummarys,
     },
   }
 }
 
-export default Home
+export default Index

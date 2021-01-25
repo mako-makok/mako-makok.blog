@@ -22,7 +22,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
       </Head>
       <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 w-full justify-start items-center">
         <div className="mb-16">
-          <Header home={home} />
+          <Header home />
         </div>
         <main>{children}</main>
         {home || (

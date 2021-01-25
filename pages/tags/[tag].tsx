@@ -1,27 +1,23 @@
 import { FC } from 'react'
-import Head from 'next/head'
 import { PostItemList, PostSummary } from '../../components/postItemList'
-import { Layout, SITE_TITLE } from '../../components/layout'
+import { Layout } from '../../components/layout'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import tagmap from '../../generate/tagmap.json'
 
 interface Props {
-  postSummary: PostSummary[]
+  postSummarys: PostSummary[]
   tag: string
 }
 
 type Tag = keyof typeof tagmap
 
 const Posts: FC<Props> = (props) => {
-  const { postSummary, tag } = props
+  const { postSummarys, tag } = props
   return (
-    <Layout home={true}>
-      <Head>
-        <title>{SITE_TITLE}</title>
-      </Head>
+    <Layout home>
       <section>
         <h2 className="text-2xl my-4">{`Articles about ${tag}`}</h2>
-        <PostItemList postDatas={postSummary} />
+        <PostItemList postSummarys={postSummarys} />
       </section>
     </Layout>
   )
@@ -35,11 +31,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
+export const getStaticProps: GetStaticProps<Props> = async (props) => {
   const tag = (props.params as any).tag as Tag
   return {
     props: {
-      postSummary: tagmap[tag],
+      postSummarys: tagmap[tag],
       tag,
     },
   }

@@ -4,7 +4,7 @@ import { Date } from './date'
 import { Tag } from './tag'
 
 interface Props {
-  postDatas: PostSummary[]
+  postSummarys: PostSummary[]
 }
 
 export type PostSummary = {
@@ -15,13 +15,13 @@ export type PostSummary = {
 }
 
 export const PostItemList: FC<Props> = (props) => {
-  const { postDatas } = props
+  const { postSummarys } = props
   return (
     <ul>
-      {postDatas.map(({ id, date, title, tags }) => (
+      {postSummarys.map(({ id, date, title, tags }) => (
         <li className="mx-0 mt-0 mb-5" key={id}>
           <small className="text-gray-400">
-            <Date dateString={date} />
+            <Date date={date} />
           </small>
           <br />
           <Link href={`/posts/${id}`}>
