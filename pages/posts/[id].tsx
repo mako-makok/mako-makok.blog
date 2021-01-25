@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { Date } from '../../components/Date'
 import { Layout } from '../../components/Layout'
 import { Tag } from '../../components/Tag'
@@ -43,6 +44,11 @@ const Posts: FC<Props> = (props) => {
         </ul>
       </div>
       <article className="prose max-w-none" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <div className="my-12">
+        <Link href="/">
+          <a>← back to home</a>
+        </Link>
+      </div>
     </Layout>
   )
 }

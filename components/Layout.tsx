@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { Header } from './Header'
 import { Footer } from './Footer'
 
@@ -23,13 +22,6 @@ export const Layout: FC<Props> = ({ children, home }) => {
       <Header />
       <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 py-8 w-full">
         <main>{children}</main>
-        {home || (
-          <div className="mt-12 mb-12">
-            <Link href="/">
-              <a>← back to home</a>
-            </Link>
-          </div>
-        )}
       </div>
       <Footer />
     </>
