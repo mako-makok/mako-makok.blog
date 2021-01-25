@@ -25,7 +25,7 @@ export const PostItemList: FC<Props> = (props) => {
           </small>
           <br />
           <Link href={`/posts/${id}`}>
-            <a>{title}</a>
+            <a className="hover:underline">{title}</a>
           </Link>
           <div className="mt-1">
             {tags?.map((tag) => (
