@@ -20,7 +20,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {home || <title>{SITE_TITLE}</title>}
       </Head>
-      <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 w-full justify-start items-center">
+      <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 w-full items-center">
         <div className="mb-16">
           <Header home />
         </div>
