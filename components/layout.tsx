@@ -19,24 +19,20 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="flex flex-col min-h-screen">
-        <div className="max-w-5xl mx-auto mb-16 px-2 w-full">
-          <div className="mb-16">
-            <Header home={home} />
+      <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 w-full justify-start items-center">
+        <div className="mb-16">
+          <Header home={home} />
+        </div>
+        <main>{children}</main>
+        {home || (
+          <div className="mt-12 mb-12">
+            <Link href="/">
+              <a>← back to home</a>
+            </Link>
           </div>
-          <main>{children}</main>
-          {home || (
-            <div className="mt-12 mb-0 mx-0">
-              <Link href="/">
-                <a>← back to home</a>
-              </Link>
-            </div>
-          )}
-        </div>
-        <div className="mt-auto">
-          <Footer />
-        </div>
+        )}
       </div>
+      <Footer />
     </>
   )
 }
