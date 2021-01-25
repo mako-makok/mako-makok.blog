@@ -9,7 +9,7 @@ export const Tag: FC<Props> = ({ tagName, textSize }) => {
   return (
     <Link href={`/tags/${tagName}`}>
       <a
-        className={`bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2 ${getClassNameByTextSize(
+        className={`bg-gray-600 rounded-full px-3 py-1 font-semibold text-gray-100 mr-2 hover:bg-gray-500 ${getClassNameByTextSize(
           textSize
         )}`}
       >
