@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { Date } from './date'
 import { Tag } from './tag'
+import { TagIcon } from '../components/icon/tagIcon'
 
 interface Props {
   postSummarys: PostSummary[]
@@ -27,11 +28,18 @@ export const PostItemList: FC<Props> = (props) => {
           <Link href={`/posts/${id}`}>
             <a className="hover:underline">{title}</a>
           </Link>
-          <div className="mt-1">
-            {tags?.map((tag) => (
-              <Tag tagName={tag} textSize="S" key={tag} />
-            ))}
-          </div>
+          <span className="flex items-center">
+            <TagIcon />
+            <ul className="inline">
+              {tags?.map((tag) => (
+                <>
+                  <li className="inline-block">
+                    <Tag tagName={tag} textSize="S" key={tag} />
+                  </li>
+                </>
+              ))}
+            </ul>
+          </span>
         </li>
       ))}
     </ul>

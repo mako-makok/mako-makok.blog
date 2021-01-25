@@ -6,6 +6,7 @@ import { Tag } from '../../components/tag'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import posts from '../../generate/posts.json'
 import { convertHtml } from '../../lib/markdown'
+import { TagIcon } from '../../components/icon/tagIcon'
 
 interface Props {
   postData: {
@@ -29,10 +30,17 @@ const Posts: FC<Props> = (props) => {
         <Date date={date} />
       </div>
       <h1 className="text-3xl font-bold">{title}</h1>
-      <div className="mt-2 mb-6">
-        {tags?.map((tag) => (
-          <Tag tagName={tag} textSize="M" key={tag} />
-        ))}
+      <div className="flex items-center mt-2 mb-6">
+        <TagIcon />
+        <ul className="inline">
+          {tags?.map((tag) => (
+            <>
+              <li className="inline-block">
+                <Tag tagName={tag} textSize="S" key={tag} />
+              </li>
+            </>
+          ))}
+        </ul>
       </div>
       <article className="prose max-w-none" dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </Layout>
