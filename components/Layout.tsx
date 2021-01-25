@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Header } from './header'
-import { Footer } from './footer'
+import { Header } from './Header'
+import { Footer } from './Footer'
 
 const SITE_TITLE = 'mako-makok.dev'
 

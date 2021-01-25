@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { Date } from './date'
-import { Tag } from './tag'
-import { TagIcon } from '../components/icon/tagIcon'
+import { Date } from './Date'
+import { Tag } from './Tag'
+import { TagIcon } from './icon/TagIcon'
 
 interface Props {
   postSummarys: PostSummary[]

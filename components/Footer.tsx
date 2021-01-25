@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { GithubIcon } from './icon/github'
-import { TwitterIcon } from './icon/twitter'
+import { GithubIcon } from './icon/GithubIcon'
+import { TwitterIcon } from './icon/TwitterIcon'
 
 export const Footer: FC = () => {
   return (

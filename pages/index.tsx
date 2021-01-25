@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { PostItemList, PostSummary } from '../components/postItemList'
-import { Layout } from '../components/layout'
+import { PostItemList, PostSummary } from '../components/PostItemList'
+import { Layout } from '../components/Layout'
 import { GetStaticProps } from 'next'
 import posts from '../generate/posts.json'
 

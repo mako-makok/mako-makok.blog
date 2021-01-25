@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import { Date } from '../../components/date'
-import { Layout } from '../../components/layout'
-import { Tag } from '../../components/tag'
+import { Date } from '../../components/Date'
+import { Layout } from '../../components/Layout'
+import { Tag } from '../../components/Tag'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import posts from '../../generate/posts.json'
 import { convertHtml } from '../../lib/markdown'
-import { TagIcon } from '../../components/icon/tagIcon'
+import { TagIcon } from '../../components/icon/TagIcon'
 
 interface Props {
   postData: {
