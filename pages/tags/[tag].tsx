@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { PostItemList, PostSummary } from '../../components/PostItemList'
+import { PostSummarys, PostSummary } from '../../components/PostSummarys'
 import { Layout } from '../../components/Layout'
 import { Tag } from '../../components/Tag'
 import { TagIcon } from '../../components/icon/TagIcon'
@@ -23,7 +23,7 @@ const Posts: FC<Props> = (props) => {
           <Tag tagName={tag} textSize="S" />
         </span>
 
-        <PostItemList postSummarys={postSummarys} />
+        <PostSummarys postSummarys={postSummarys} />
       </>
     </Layout>
   )

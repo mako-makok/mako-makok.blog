@@ -16,7 +16,7 @@ export type PostSummary = {
   excerpt: string
 }
 
-export const PostItemList: FC<Props> = (props) => {
+export const PostSummarys: FC<Props> = (props) => {
   const { postSummarys } = props
   return (
     <ul>

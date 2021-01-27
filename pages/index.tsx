@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { PostItemList, PostSummary } from '../components/PostItemList'
+import { PostSummarys, PostSummary } from '../components/PostSummarys'
 import { Layout } from '../components/Layout'
 import { GetStaticProps } from 'next'
 import posts from '../generate/posts.json'
@@ -12,7 +12,7 @@ const Index: FC<Props> = (props) => {
   const { postSummarys } = props
   return (
     <Layout home>
-      <PostItemList postSummarys={postSummarys} />
+      <PostSummarys postSummarys={postSummarys} />
     </Layout>
   )
 }
