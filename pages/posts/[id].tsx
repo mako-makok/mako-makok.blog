@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { Date } from '../../components/Date'
 import { Layout } from '../../components/Layout'
 import { Tag } from '../../components/Tag'
@@ -8,9 +7,11 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import posts from '../../generate/posts.json'
 import { convertHtml } from '../../lib/markdown'
 import { TagIcon } from '../../components/icon/TagIcon'
+import { TwitterIcon, TwitterShareButton, HatenaIcon, HatenaShareButton } from 'react-share'
 
 interface Props {
   postData: {
+    id: string
     contentHtml: string
     title: string
     date: string
@@ -21,7 +22,8 @@ interface Props {
 type Id = keyof typeof posts
 
 const Posts: FC<Props> = (props) => {
-  const { contentHtml, title, date, tags } = props.postData
+  const { id, contentHtml, title, date, tags } = props.postData
+  const url = `https://makomakok.dev/posts/${id}`
   return (
     <Layout home={false}>
       <Head>
@@ -45,9 +47,14 @@ const Posts: FC<Props> = (props) => {
       </div>
       <article className="prose max-w-none" dangerouslySetInnerHTML={{ __html: contentHtml }} />
       <div className="my-12">
-        <Link href="/">
-          <a>← back to home</a>
-        </Link>
+        <TwitterShareButton url={url} title={title}>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+        <span className="mx-4">
+          <HatenaShareButton url={url} title={title}>
+            <HatenaIcon size={32} round />
+          </HatenaShareButton>
+        </span>
       </div>
     </Layout>
   )
@@ -69,6 +76,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   return {
     props: {
       postData: {
+        id,
         contentHtml,
         title,
         date,
