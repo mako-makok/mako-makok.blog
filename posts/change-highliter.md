@@ -3,7 +3,6 @@ title: 'Tailwindを導入した'
 date: '2020-12-21'
 tags: ['tailwind', 'Prism.js']
 ---
-
 Tailwind を導入して markdown 部分のデザインを少々変更しました。
 
 ## Tailwind CSS の導入
