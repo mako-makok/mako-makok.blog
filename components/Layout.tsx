@@ -17,7 +17,7 @@ export const Layout: FC<Props> = ({ children, home }) => {
         <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {home || <title>{SITE_TITLE}</title>}
+        {home && <title>{SITE_TITLE}</title>}
       </Head>
       <Header />
       <section className=" bg-gray-100">
