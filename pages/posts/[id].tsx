@@ -36,8 +36,8 @@ const Posts: FC<Props> = (props) => {
         <ul className="inline">
           {tags?.map((tag) => (
             <>
-              <li className="inline-block">
-                <Tag tagName={tag} textSize="S" key={tag} />
+              <li className="inline-block" key={tag}>
+                <Tag tagName={tag} textSize="S" />
               </li>
             </>
           ))}

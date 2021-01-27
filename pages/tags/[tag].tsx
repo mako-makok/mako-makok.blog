@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { PostItemList, PostSummary } from '../../components/PostItemList'
 import { Layout } from '../../components/Layout'
+import { Tag } from '../../components/Tag'
+import { TagIcon } from '../../components/icon/TagIcon'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import tagmap from '../../generate/tagmap.json'
 
@@ -15,10 +17,14 @@ const Posts: FC<Props> = (props) => {
   const { postSummarys, tag } = props
   return (
     <Layout home>
-      <section>
-        <h2 className="text-2xl my-4">{`Articles about ${tag}`}</h2>
+      <>
+        <span className="flex items-center">
+          <TagIcon />
+          <Tag tagName={tag} textSize="S" />
+        </span>
+
         <PostItemList postSummarys={postSummarys} />
-      </section>
+      </>
     </Layout>
   )
 }

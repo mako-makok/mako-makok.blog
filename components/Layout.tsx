@@ -20,10 +20,12 @@ export const Layout: FC<Props> = ({ children, home }) => {
         {home || <title>{SITE_TITLE}</title>}
       </Head>
       <Header />
-      <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 py-8 w-full">
-        <main>{children}</main>
-      </div>
-      <Footer />
+      <section className=" bg-gray-100">
+        <div className="flex flex-1 flex-col min-h-screen max-w-5xl mx-auto px-2 py-8 w-full">
+          <main>{children}</main>
+        </div>
+        <Footer />
+      </section>
     </>
   )
 }

@@ -4,6 +4,20 @@ const matter = require('gray-matter')
 
 const getFileNames = (dir) => fs.readdirSync(dir)
 
+const makeExcerpt = (text, length, textAtEnd = '') => {
+  if (!text) return ''
+
+  let sum = 0
+  let result = ''
+  for (const str of text.split('')) {
+    const byte = Buffer.byteLength(str, 'utf8')
+    byte > 2 ? (sum += 2) : (sum += byte)
+    if (sum > length) break
+    result += str
+  }
+  return result + textAtEnd
+}
+
 const getAllPost = () => {
   const postsDirectory = path.join(process.cwd(), 'posts')
   const fileNames = getFileNames(postsDirectory)
@@ -12,23 +26,26 @@ const getAllPost = () => {
       const id = fileName.replace(/\.md$/, '')
 
       const fileContents = fs.readFileSync(path.join(postsDirectory, fileName), 'utf-8')
-      const frontMatter = matter(fileContents)
+      const frontMatter = matter(fileContents, { excerpt_separator: '##' })
+      const excerpt = makeExcerpt(frontMatter.excerpt, 150, '...')
       return {
         id,
         ...frontMatter.data,
+        excerpt,
         content: frontMatter.content,
       }
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1))
 
   return allPost.reduce((acc, post) => {
-    const { id, title, date, tags, content } = post
+    const { id, title, date, tags, excerpt, content } = post
     return {
       ...acc,
       [id]: {
         title,
         date,
         tags,
+        excerpt,
         content,
       },
     }
@@ -39,12 +56,12 @@ const getTagmap = (posts) => {
   const tagmap = {}
 
   Object.entries(posts).forEach(([id, post]) => {
-    const { title, date, tags } = post
+    const { title, date, tags, excerpt } = post
     post.tags.forEach((tag) => {
       if (tag in tagmap) {
-        tagmap[tag].push({ id, title, date, tags })
+        tagmap[tag].push({ id, title, date, tags, excerpt })
       } else {
-        tagmap[tag] = [{ id, title, date, tags }]
+        tagmap[tag] = [{ id, title, date, tags, excerpt }]
       }
     })
   })
