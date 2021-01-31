@@ -30,12 +30,10 @@ export const PostSummarys: FC<Props> = (props) => {
               <span className="flex items-center">
                 <TagIcon />
                 <ul className="inline">
-                  {tags?.map((tag) => (
-                    <>
-                      <li className="inline-block" key={tag}>
-                        <Tag tagName={tag} textSize="S" />
-                      </li>
-                    </>
+                  {tags.map((tag) => (
+                    <li className="inline-block" key={tag}>
+                      <Tag tagName={tag} textSize="S" />
+                    </li>
                   ))}
                 </ul>
               </span>

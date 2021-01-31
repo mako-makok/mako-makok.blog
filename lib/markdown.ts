@@ -1,9 +1,17 @@
-import html from 'remark-html'
-import remark from 'remark'
-import prism from 'remark-prism'
+import * as shiki from 'shiki'
+import markdownIt from 'markdown-it'
 
 export async function convertHtml(markdown: string): Promise<string> {
-  const processedContent = await remark().use(html).use(prism).process(markdown)
-  const contentHtml = processedContent.toString()
-  return contentHtml
+  const highlighter = await shiki.getHighlighter({ theme: 'nord' })
+  if (!highlighter.codeToHtml) return markdown
+
+  const codeToHtml = highlighter.codeToHtml
+  const md = markdownIt({
+    html: true,
+    highlight: (code: string, lang: string) => {
+      return codeToHtml(code, lang)
+    },
+  })
+
+  return md.render(markdown)
 }
