@@ -11,7 +11,7 @@ const makeExcerpt = (text, length, textAtEnd = '') => {
   let result = ''
   for (const str of text.split('')) {
     const byte = Buffer.byteLength(str, 'utf8')
-    byte > 2 ? (sum += 2) : (sum += byte)
+    sum += byte > 2 ? 2 : byte
     if (sum > length) break
     result += str
   }
@@ -27,7 +27,7 @@ const getAllPost = () => {
 
       const fileContents = fs.readFileSync(path.join(postsDirectory, fileName), 'utf-8')
       const frontMatter = matter(fileContents, { excerpt_separator: '##' })
-      const excerpt = makeExcerpt(frontMatter.excerpt, 150, '...')
+      const excerpt = makeExcerpt(frontMatter.excerpt, 140, '...')
       return {
         id,
         ...frontMatter.data,
