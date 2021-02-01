@@ -8,6 +8,7 @@ export async function convertHtml(markdown: string): Promise<string> {
   const codeToHtml = highlighter.codeToHtml
   const md = markdownIt({
     html: true,
+    linkify: true,
     highlight: (code: string, lang: string) => codeToHtml(code, lang),
   })
 
