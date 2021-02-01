@@ -17,7 +17,7 @@ Blob以外のオブジェクトからBlobを得るためにはコンストラク
 const foo = new Blob(['foo'])
 ```
 
-BlobはW3CのFile APIで定義されています。
+BlobはW3CのFile APIで定義されています。  
 https://www.w3.org/TR/FileAPI/#url
 
 上記で定義されている通り、Blobオブジェクトのプロパティは`size`と`type`があります。
@@ -32,7 +32,7 @@ Blob.sizeは`encodeURIComponent`を使うよりかは全然直感的ですが、
 
 
 ## Buffer
-Node.js限定ですが、Bufferクラスがあります。
+Node.js限定ですが、Bufferクラスがあります。  
 https://nodejs.org/api/buffer.html#buffer_class_buffer
 
 Bufferを得るためには`Buffer.alloc`を使用します。コンストラクタを利用する方法も昔はあったようですが、非推奨になったようです。
