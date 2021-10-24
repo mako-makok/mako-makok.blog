@@ -72,7 +72,7 @@ Cypress で実現できない要件がある場合は TestCafe、そうでない
 完全に主観だが、Cypress のほうが公式のサポートが手厚く、ドキュメントの整備もされている。GUI の UX(=デバッガビリティ)も良い。  
 Cypress は IE を完全に切り捨てているので、ここがポイントになることが多そう。
 
-## Cypress の簡単な使用方法
+## Cypress のディレクトリ構成
 
 1. `npm install cypress`
 2. `npx cypress open`
@@ -175,6 +175,93 @@ https://docs.cypress.io/api/table-of-contents
 
 ### support
 
+Cypress ではカスタムコマンドを定義することができ、それらのコマンドや設定をこの`support`配下に配置します。  
+E2E テストのデザインパターンとしてよく挙げられるのがページオブジェクトパターンですが、このパターンは Cypress では推奨されていません。代わりにこちらのカスタムコマンドを使うことを推奨されています。  
+なぜページオブジェクトパターンが推奨されていないのかは以下を御覧ください。  
+https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/
+
+カスタムコマンドには説明するより見たほうが早いと思いです。自動生成されたファイルがあると思うので見てみます。
+
+```sh
+> cat cypress/support/commands.js
+
+// ***********************************************
+// This example commands.js shows you how to
+// create various custom commands and overwrite
+// existing commands.
+//
+// For more comprehensive examples of custom
+// commands please read more here:
+// https://on.cypress.io/custom-commands
+// ***********************************************
+//
+//
+// -- This is a parent command --
+// Cypress.Commands.add('login', (email, password) => { ... })
+//
+//
+// -- This is a child command --
+// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+//
+//
+// -- This is a dual command --
+// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
+//
+//
+// -- This will overwrite an existing command --
+// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... }
+```
+
+```sh
+> cat cypress/support/index.js
+
+// ***********************************************************
+// This example support/index.js is processed and
+// loaded automatically before your test files.
+//
+// This is a great place to put global configuration and
+// behavior that modifies Cypress.
+//
+// You can change the location of this file or turn off
+// automatically serving support files with the
+// 'supportFile' configuration option.
+//
+// You can read more here:
+// https://on.cypress.io/configuration
+// ***********************************************************
+
+// Import commands.js using ES2015 syntax:
+import './commands'
+
+// Alternatively you can use CommonJS syntax:
+// require('./commands')
+```
+
+E2E テストを複数書いてみると、同じような操作が出てくると思います。例えば「アプリにログインする」「A を B に D&D する」などです。  
+Cypress のデフォルトで提供されている API ではできないけど、定型化された操作はカスタムコマンドにしてしまうと良いです。  
+次の例はログイン処理をカスタムコマンドに追加する例です。
+
+```js
+// support/commands.js
+Cypress.Commands.add('login', (email, password) => {
+  cy.visit()
+  cy.contains('メールアドレス')
+    .get('input')
+    .type(email)
+  cy.contains('パスワード')
+    .get('input')
+    .type(password))
+  cy.contains('ログイン')
+    .click()
+})
+
+// support/index.js
+import './commands'
+
+// test code
+cy.login('foo@example.com', 'foo')
+```
+
 ### plugins
 
 現状、Cypress ではできないことや、生の API だけで実現するのは大変なことがいくつかあります。  
@@ -208,3 +295,7 @@ addMatchImageSnapshotCommand()
 4. テストを書く(refs: https://github.com/jaredpalmer/cypress-image-snapshot#syntax)
 
 Cypress は他にも様々な plugin が提供されています。
+
+## Optional: より快適にテストを書くために
+
+ここまでで、ある程度快適にテストをかけるようになりました。ですが、より快適にテストを書くための手法や
