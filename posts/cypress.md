@@ -1,6 +1,6 @@
 ---
 title: 'Cypress'
-date: '2021-10-21'
+date: '2021-10-24'
 tags: ['Cypress']
 ---
 
