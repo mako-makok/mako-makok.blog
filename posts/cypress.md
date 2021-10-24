@@ -123,7 +123,8 @@ Cypress は IE を完全に切り捨てているので、ここが大きなポ�
 
 ### cypress.json
 
-設定ファイルです。
+設定ファイルです。公式のドキュメントがわかりやすいので説明は省きます。  
+https://docs.cypress.io/guides/references/configuration
 
 ### fixtures
 
