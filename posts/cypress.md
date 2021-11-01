@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 title: 'Cypress hands on'
-=======
-title: 'Cypress'
->>>>>>> 08083d74690e935305296663aa1bfd782bb18fa6
 date: '2021-10-24'
 tags: ['Cypress']
 ---
